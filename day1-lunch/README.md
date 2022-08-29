@@ -80,8 +80,36 @@
 	 
 5. 	A) cd
 		cp ~/data/   /random_snippet.vcf
-	 B) less -S random_snippet.vcf
+	 less -S random_snippet.vcf
 		 #Go over to the right and look at the column information. First column is the notes,
 		 #second column is filter, and so on to the info, format and HG000XX lines
 			
-	C)	 
+	B)	 
+	cut -f 1,2,3,4,5,6,7,8,9,13 random_snippet.vcf > HG00100.vcf #removes the undesired columns
+	grep -v "#" HG00100.vcf  #removes all the #
+	C)
+	cut -f 10
+	#OUTPUT is 0/1 and many types
+	cut -f 10 HG00100.vcf | sort | uniq -c
+	#OUTPUT:
+	9514 0|0
+	 127 0|1
+	 178 1|0
+	 181 1|1
+	 
+	 D) 
+	 #How many rows have AF=1?
+	 grep ";AF=1." HG00100.vcf | wc #denote ";AF=1." or can pull other things with just AF (_AF, or others)
+	 #OUTPUT: 
+	 15     150    1884
+	ANSWER:	 15 rows have AF=1
+	 
+	 E)
+	 #AF=1 can appear more than once because there could be populations within the super population that have a AF value of 1. For instance, EAS_AF=1. That is why in the previous part D, we made sure to denote just ";AF=1." to prevent it from being oucnted multiple times per row.
+	 
+	 F)
+	 #You would want to cut ";AFR_AF "with the value";" -f 
+	 #You would need to allow the integers following AF to be included in the cut, which you could probably do with awk funciton because you would need to include from 0 to 1 of the AF value attached to the ";AFR_AF_".
+	 
+	 
+	
