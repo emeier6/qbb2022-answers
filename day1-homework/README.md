@@ -95,3 +95,57 @@ Considering  T
 
 
 #Exercise 2:
+	#GOAL: What’s the most common alternate allele for a Cytosine reference allele for variants occurring in promoter like regions of the genome?
+
+	#~/data/vcf_files/random_snippet.vcf
+	vcffile=/Users/cmdb/data/vcf_files/random_snippet.vcf
+
+	#DEFINING PROMOTER-LIKE REGIONS:
+	#~/data/bed_files/chromHMM.E116_15_coreMarks_hg38lift_stateno.chr21.bed
+	chromHMM=/Users/cmdb/data/bed_files/chromHMM.E116_15_coreMarks_hg38lift_stateno.chr21.bed
+
+	###bedtools intersect -a $vcffile -b $sorted > intersect_out_ex2.bed
+
+	wc intersect_out_ex2.bed
+	#OUTPUT: number of SNVs that intersect with A gene 
+	# 9893 25296401 102034267 intersect_out_ex2.bed
+
+	#awk '/^#/{next} {print $4}' ~/data/vcf_files/random_snippet.vcf | sort | uniq -c
+
+	#less ~/data/bed_files/chromHMM.E116_15_coreMarks_hg38lift_stateno.chr21.bed 
+
+
+	###Using this segmentation, do promoters appear to be clearly and objectively defined?
+
+		#Defining the promoter region is not clearly defined. They are not defined where they are located, and while they may be a part of trascriptional regulation, the database does not really say what their affects are. 1, 2, 3, 10, 11, 12 are close to the regions of the genes and likely within the promoter regions, however, promoter regions are not always next to the gene of interest, and can be located farther away. 
+	
+	
+	
+	grep -Ew '1|2|3|10|11' ~/data/bed_files/chromHMM.E116_15_coreMarks_hg38lift_stateno.chr21.bed | sort -nk 4 > sortedChmm.bed
+	
+	sorted=/Users/cmdb/qbb2022-answers/day1-homework/sortedChmm.bed
+
+	bedtools intersect -a $vcffile -b $sorted > intersect_out_ex2_2.bed
+	#awk '{if($4 == "1,2,3,10,11")} {(print $4)}' /data/bed_files/chromHMM.E116_15_coreMarks_hg38lift_stateno.chr21.bed | sort | uniq -c
+
+	for nuc in C
+	do
+	  echo "Considering " $nuc
+	  #awk '/^#/{next} {if ($4 == $nuc) {print $5}}' $1 | sort | uniq -c
+
+	  #awk -v i="$i" '/^#/{next} {if (NR==i) {print $1, $2}}' temp_file
+	  awk -v nuc="$nuc" '/^#/{next} {if ($4 == nuc) {print $5}}' $1 | sort | uniq -c
+
+	  #awk 'NR=='$i'{print $1, $2}' temp_file
+	  ##awk '/^#/{next} {if ($4 == '$nuc') {print $5}}' $1 | sort | uniq -c
+	done
+	
+	bash exercise2.sh intersect_out_)ex2_2.bed
+	
+	Considering  C
+	  12 A
+	  11 G
+	  41 T
+	  
+	  
+#Exercise 3:
