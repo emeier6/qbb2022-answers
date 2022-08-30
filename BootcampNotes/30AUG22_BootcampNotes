@@ -1,0 +1,309 @@
+Day 2 -Bootcamp
+30AUG22
+Emily Meier
+
+#Morning code to look at new commented changes:
+#1) Navigate to the saved github file: ~/qbb2022-answers
+#2) ls to see the files in the github server
+git config pull.ff only
+git pull
+ls #to see if the new file was uploaded
+#3) Navigate to the new file (~/prepwork)
+#4) Look at the new version of the file (named in ls)
+ls
+open -a Textmate "NAMEOFFILE"
+#5) Make changes to the script
+#6) Save the file and upload new version to github:
+git add NAMEOFFILE
+git commit -m "new nane of the edited file"
+git push
+
+ls
+open -a Textmate "NAMEOFFILE" #to check that changes have been made
+
+
+Day 2 - Bootcamp
+30AUG22
+Emily K. Meier
+
+################# 29AUG22 Homework Review #########################################
+
+
+### TALKING ABOUT AWK FUNCTION #########
+
+
+#awk and grep look row by row through data
+#awk is good at specifying the pattern magic, very quick
+
+
+	IE: f1.vcf
+	chr		pos		ref		alt
+	21		1		A		G
+	21		2		C		G
+	21		3		G		A
+	21		4		T		C
+	
+	awk '--- ---' f1.vcf #Looking through reference and alt
+	
+	'{ (#what we want to search for#)}
+	'{ ($3 #for 3rd column# == #is something equal to# "G #letter of interest#" ) (print)}'
+	#If I am looking at G, print the entire row if conditional true #first 
+	#If wanting to only print a certain column (IE column 2):
+	'{ ($3 #for 3rd column# == "G #letter of interest#" ) (print $2)}'
+	
+	
+	awk '{print}'
+	#Simply prints the entire workbook
+	
+	
+	awk '{print $3-$2}' #will subtract 3rd minus second column in awk (useful for bed files that say something like:
+		IE:
+		21 	5001		50003)
+		
+		
+	awk '/^# {next}	{print}' 
+	#If the row starts with a # or note, then skip. If it does not, then you can print
+	
+	
+	###  Getting fancy with the printing in awk: #########
+	print ƒ		
+	#yeilds this notation:
+	"%-10s" $1
+	number is	"%-10d" $1
+	can change the number in front of d to change the number at the end of the output
+	
+	#Easier way (not all in awk):
+	
+	awk '{expression}' | {-v ::-2}
+	
+	
+	
+	
+	
+########## BEDTOOLS REVIEW ###########
+	
+	#What does bedtools INTERSECT do?:
+		#Bedtools intersect looks at two files (file A and file B), and cuts out the parts of A that is also in B. If the A file is vcf, then outputs in a vcf. If A file is bed, outputs in bed. What is returned are the parts in file A found in file B.
+	
+	
+	#What does bedtools CLOSESTS do?:
+		#
+		File A: 	ch5		50		75
+		
+		File B:		ch5		20		23
+					ch5		80		82
+					
+		#For every feeature in File A, what is the closest feature in file B?
+		
+		#OUTPUT:
+		chr5		50		75		chr		80		82
+	
+	
+	
+
+
+##############################################################################
+
+####### IN CLASS NOTES #######################################################
+####### PYTHON DAY 1
+
+
+
+Intgers: Whole numbers
+Floats: Decimals
+
+	IE: Making a list
+	
+	fruit = ['apples', 'oranges', 'bananas', 'pears']
+	
+	#Pulling out bananas:
+	fruit[2]
+	
+	#Pulling out apples and oranges:
+	fruit[0:2]
+	#OR
+	fruit[:2]
+	
+	#Adding something to the end of the list
+	fruit.append('strawberries')
+	fruit.insert(5, 'straawberries') #important to make a new spot
+	fruit += ['strawberries'] #this is fruit = fruit + strawberries
+	
+	##
+	## Adding tupples for 'fruit preference'
+	fruit = [(True, 'apples'), (False, bananas),...]
+	#Recalling banans:
+	fruit[2][1] #report in the second item, pull the second item
+	
+	fruit.sort()
+	#Would organize the fruits by the first value (Falses and Trues)
+	
+	#TUPLES ARE NOT MUTABLE
+	#To change banana preference, would need to replace the whole entry because it's a tuple
+	
+	
+	#Lists and strings:
+##	List to string
+	using fruit, 
+	fruit_str = ", ".join(fruit)
+	
+##	str back into list?
+	fruit_str.split() #Splits on white spaces and tabs, so actuall:
+	fruit_str.split(", ")
+	
+	
+
+
+	### Parsing a BED file ########################
+	
+	#Bed format?
+		1.  chrom		
+		2.  chromStart
+		3.  chromEnd
+		4.  name
+		5.  score		#whatever you want, typically gene expression level 0 - 1000 in gene display on UCSC whole number
+		6.  strand
+		7.  thickStart
+		8.  thickEnd
+		9.  itemRGB
+		10. blockCount
+		11. blockSizes
+		12. blockStarts
+		
+		
+		
+		# basic bed parser to break down 1-3
+		### Pseudo-coding the parser
+			Step 1: Open file
+			Step 2: Initialize a variable to hold the info (a list)
+			Step 3: Read file line by line (in a string format)
+				Step 3a: Need to break up line by tabs
+				Step 3b: Store the new separated line as a new variable
+				Step 3c: Go to next line
+			Step 4: Close the file
+			
+			
+		
+		#basic bed parser to break down 1-3
+mkdir day2-morning
+		
+cp ~/cmdb-quantbio/assignments/bootcamp/extend_bed_parser/extra_data/README.md .
+cp ~/cmdb-quantbio/assignments/bootcamp/extend_bed_parser/extra_data/hg38_gencodev41_chr21.bed .
+		
+	#INTO PYTHON
+fs = open("hg38_gencodev41_chr21.bed", mode='r')
+bed = []
+for line in fs:
+	fields = line.rstrip().split("\t")
+	chrom = fields[0]
+	start = int(fields[1])
+	end = int(fields[2])
+	#create list of fields and put in bed-list
+	bed.append([chrom, start, end])
+fs.close()
+
+for i in range(2):
+	print(bed[i])
+
+
+
+
+#open up file and put filestream in ffs
+fs = open("hg38_gencodev41_chr21.bed", mode='r')
+# create empty list to hold entries
+bed = []
+#Step line by line through file
+for line in fs:
+	#Get rid of newline char and split into
+	# seperate fields
+	fields = line.rstrip().split("\t")
+	#Name relevant fields, convertin to ints
+	#when needed
+	chrom = fields[0]
+	start = int(fields[1])
+	end = int(fields[2])
+	#create list of fields and put in bed-list
+	bed.append([chrom, start, end])
+fs.close()
+
+#close out first 2 entries
+
+for i in range(2):
+	print(bed[i])
+	
+#OUTPUT:
+['chr21', 5011798, 5017145]
+['chr21', 5022530, 5036771]
+
+#USE THIS TO CALL THE CODE IN REFERENCE TO A BED FILE:
+#python bed_parser.py hg38_gencodev41_chr21.bed 
+
+
+
+
+	#INTO PYTHON - requires .py file
+    #Touch ___.py into the file of interest
+    #open -a Textmate __.py
+
+#!/usr/bin/env python3 
+    
+import sys
+
+def bed_parser(fname):
+#fs = open("hg38_gencodev41_chr21.bed", mode='r')
+    fs = open(fname, mode='r')
+    # create empty list to hold entries
+    bed = []
+    data_types = [str, int, int, str, float, str]
+    #Step line by line through file
+    for line in fs:
+        #Get rid of newline char and split into
+        # seperate fields
+        fields = line.rstrip().split("\t")
+        #Name relevant fields, convertin to ints
+        #when needed
+        for i in range(min(len(data_types), len(fields))):
+            if fields[i] != ".":
+                fields[i] = data_types[i](fields[i])      
+        #chrom = fields[0]
+        #start = int(fields[1])
+        #end = int(fields[2])
+        #create list of fields and put in bed-list
+            bed.append(fields[:min(len(data_types), len(fields))])
+            #bed.append([chrom, start, end])
+    fs.close()
+    return bed
+
+    #close out first 2 entries
+
+    #for i in range(2):
+    #    print(bed[i])
+
+#protection for running the previous code and also importing it into something elses
+if __name__ == "__main__":
+#requires bed variable to be defined as what you want to print
+    bed = bed_parser(sys.argv[1])
+    
+#pull out the first 2 entries as list and look
+#at each entry in variable i    
+
+    for i in bed[0:2]:
+#    print entry 1s
+        print(i)
+
+#for i in range(2):
+#NOT GOOD	print(i)
+
+
+#OUTPUT:
+#['chr21', 5011798, 5017145]
+#['chr21', 5022530, 5036771]
+
+#USE THIS TO CALL THE CODE IN REFERENCE TO A BED FILE:
+#python bed_parser.py hg38_gencodev41_chr21.bed 
+
+### PARTS OF A FUNCTION ####################
+
+
+
+	
