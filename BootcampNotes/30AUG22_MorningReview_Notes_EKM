@@ -1,0 +1,76 @@
+Day 2 - Bootcamp
+30AUG22
+Emily K. Meier
+
+################# 29AUG22 Homework Review #########################################
+
+
+### TALKING ABOUT AWK FUNCTION #########
+
+
+#awk and grep look row by row through data
+#awk is good at specifying the pattern magic, very quick
+
+
+	IE: f1.vcf
+	chr		pos		ref		alt
+	21		1		A		G
+	21		2		C		G
+	21		3		G		A
+	21		4		T		C
+	
+	awk '--- ---' f1.vcf #Looking through reference and alt
+	
+	'{ (#what we want to search for#)}
+	'{ ($3 #for 3rd column# == #is something equal to# "G #letter of interest#" ) (print)}'
+	#If I am looking at G, print the entire row if conditional true #first 
+	#If wanting to only print a certain column (IE column 2):
+	'{ ($3 #for 3rd column# == "G #letter of interest#" ) (print $2)}'
+	
+	
+	awk '{print}'
+	#Simply prints the entire workbook
+	
+	
+	awk '{print $3-$2}' #will subtract 3rd minus second column in awk (useful for bed files that say something like:
+		IE:
+		21 	5001		50003)
+		
+		
+	awk '/^# {next}	{print}' 
+	#If the row starts with a # or note, then skip. If it does not, then you can print
+	
+	
+	###  Getting fancy with the printing in awk: #########
+	print ƒ		
+	#yeilds this notation:
+	"%-10s" $1
+	number is	"%-10d" $1
+	can change the number in front of d to change the number at the end of the output
+	
+	#Easier way (not all in awk):
+	
+	awk '{expression}' | {-v ::-2}
+	
+	
+	
+	
+	
+########## BEDTOOLS REVIEW ###########
+	
+	#What does bedtools INTERSECT do?:
+		#Bedtools intersect looks at two files (file A and file B), and cuts out the parts of A that is also in B. If the A file is vcf, then outputs in a vcf. If A file is bed, outputs in bed. What is returned are the parts in file A found in file B.
+	
+	
+	#What does bedtools CLOSESTS do?:
+		#
+		File A: 	ch5		50		75
+		
+		File B:		ch5		20		23
+					ch5		80		82
+					
+		#For every feeature in File A, what is the closest feature in file B?
+		
+		#OUTPUT:
+		chr5		50		75		chr		80		82
+	
