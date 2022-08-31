@@ -83,6 +83,6 @@ if __name__ == "__main__":
     fname = sys.argv[1]
     bed = parse_bed(fname)
     
-
+for 
 
 #Fields 9, 11, and 12 are lists, and then loop through the lists and change each value to a field type to be used
