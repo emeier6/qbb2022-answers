@@ -4,6 +4,7 @@
 import sys
 
 def parse_bed(fname):
+#    counter = 0
     try:
         fs = open(fname, 'r')
     except:
@@ -51,16 +52,15 @@ def parse_bed(fname):
         if not fields[11].endswith(","):
             print("blockStart does NOT end with ,")  
             
-        if len(fields[10]) == len(fields[9]):
-            print("blockSize = blockCount!")
-        if not len(fields[10]) == len(fields[9]):
-            print("blockSize DOES NOT = blockCount!")
-        
         ####or is this saying
         #if (len(fields[10]) + len(fields[11])) == len(fields[9]):
         #    print("the blockSizes + blockStarts = blockCount!")
         #if not (len(fields[10]) + len(fields[11])) == len(fields[9]):
         #    print("the blockSizes + blockStarts DO NOT = blockCount!")
+        if len(fields[10]) == len(fields[9]):
+            print("blockSize = blockCount!")
+        if not len(fields[10]) == len(fields[9]):
+            print("blockSize DOES NOT = blockCount!")
         
         if len(fields[11]) == len(fields[9]):
             print("blockStarts = blockCount!")
@@ -75,6 +75,8 @@ def parse_bed(fname):
             bed.append(fields)
         except:
             print(f"Line {i} appears malformed", file=sys.stderr)
+#            counter = counter + 1
+ #           print(counter)
     fs.close()
     return bed
     
@@ -83,6 +85,7 @@ if __name__ == "__main__":
     fname = sys.argv[1]
     bed = parse_bed(fname)
     
-for 
+#Block count is the number of exons
+#if gene start and end are the same, what is the median number of exons?    
 
 #Fields 9, 11, and 12 are lists, and then loop through the lists and change each value to a field type to be used
