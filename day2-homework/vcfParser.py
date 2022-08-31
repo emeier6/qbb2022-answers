@@ -8,6 +8,7 @@ import sys
 def parse_vcf(fname):
     vcf = []
     #this vcf list
+    
     #initializing a lot of dictionaries to store information
     
     info_description = {}
