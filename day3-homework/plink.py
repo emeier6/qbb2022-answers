@@ -43,9 +43,9 @@ eigenvec = np.genfromtxt("plink.eigenvec", dtype = None, encoding = None, names 
 fig, ax = plt.subplots(nrows=1)
 
 #ax is the subplot
-    #ax.scatter(eigenvec["PCA1"], eigenvec["PCA2"], label = "Comp. PCA1 to PCA2")
-    #ax.set_ylabel("PCA2")
-    #ax.set_xlabel("PCA1")    
+#ax[0].scatter(eigenvec["PCA1"], eigenvec["PCA2"], label = "Comp. PCA1 to PCA2")
+#ax[0].set_ylabel("PCA2")
+#ax[0].set_xlabel("PCA1")    
 #ax.legend()
 
 #CHECK:plt.show()
@@ -61,11 +61,12 @@ fig, ax = plt.subplots(nrows=1)
 #plt.close(fig)
 
 
-ax.scatter(eigenvec["PCA1"], eigenvec["PCA2"], label = "Comp. PCA1 to PCA3")   
-ax.set_ylabel("PCA1")
-ax.set_xlabel("PCA3")    
+ax.scatter(eigenvec["PCA1"], eigenvec["PCA3"], label = "Comp. PCA1 to PCA3")   
+ax.set_ylabel("PCA3")
+ax.set_xlabel("PCA1")    
 #ax.legend()
-#CHECK:plt.show()
+#CHECK:
+#plt.show()
     #SHE GORGEOUS
 
 #RUNNING IN BASH: python plink.py ALL.chr21.shapeit2_integrated_v1a.GRCh38.20181129.phased.vcf.gz 
@@ -74,4 +75,5 @@ ax.set_xlabel("PCA3")
 
 plt.savefig("ex2_b.png")
 plt.close(fig)
- 
+
+#OUTPUT: These two files are now saved as "ex2_1.png" and "ex2_b.png" and uploaded into github
