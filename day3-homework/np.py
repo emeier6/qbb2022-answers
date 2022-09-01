@@ -25,7 +25,7 @@ ax.set_ylabel("PC2")
 ax.set_xlabel("PC1")    
 ax.legend()
 
-
+s
 #CHECK:
 #plt.show()
     #LOOKS GREAT
