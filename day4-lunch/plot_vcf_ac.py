@@ -16,7 +16,25 @@ for i, line in enumerate( fs ):
 
 fig, ax = plt.subplots()
 ax.hist( ac, density=True )
-fig.savefig( vcf + ".png" )
+#fig.savefig( vcf + ".png" ) #we are now making out own plots
 
-fs.close()
 
+ax.set_yscale("log")
+ax.set_ylim(0,(1e-2))
+ax.set_ylabel("log(another one)")
+
+ax.set_xlabel("Something :^)")    
+ax.legend()
+
+ax.set_title(vcf)
+
+
+plt.show()
+
+#fs.close()
+
+#plt.savefig("lncRNA.chr21.bed.vcf.png")
+#plt.close(fig)
+
+#JUST GOING TO RUN AND CHANGE processed_pseudogene.chr21.bed.vcf
+#RUNNING: python plot_vcf_ac.py processed_pseudogene.chr21.bed.vcf
