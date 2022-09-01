@@ -24,6 +24,12 @@ bash do_all.sh random_snippet.vcf gencode.v41.annotation.gtf
 ```
 
 #Exercise 1:
-	1. Portion of do_all.sh output (not script) that reports how many bp each feature covers
+	1. Which portion of do_all.sh output (not script) reports how many bp each feature covers
 	
-	
+		-The output that reports how many bp each feature covers are the processed pseudogenes?
+		-Running this sh code made new bed files, many vcf files, and png files.
+		-I believe this refers to the vcf files that this made, of which there are bed, vcf and png files for each:
+			exons.chr21
+			processed_pseudogene.chr21
+			protein_coding.chr21
+		-As well as the annotated v41 genecode, and the random_snippet vcf
