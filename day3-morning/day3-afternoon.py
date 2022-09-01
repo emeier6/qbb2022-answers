@@ -65,8 +65,7 @@ ax[1].legend()
     #cannot run a legend on an array with only one variable 
 #plt.show()
 
-plt.savefig("lineplot.png")
-    #plt.savefig("FILENAMETOSAVETO")
+print(genes_per_chrom)    #plt.savefig("FILENAMETOSAVETO")
     #need to denote as.png or .pdf, which ever file makes the most sense
 
 plt.close(fig)
