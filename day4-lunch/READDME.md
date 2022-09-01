@@ -12,5 +12,9 @@ conda create --name day4-lunch
 conda activate day4-lunch
 conda install bedtools matplotlib
 
+	conda deactivate
+    	#go back to base terminal
+	conda activate day4-lunch
+		#go into day4-lunch terminal
 #Run workflow
 bash do_all.sh random_snippet.vcf gencode.v41.annotation.gtf
