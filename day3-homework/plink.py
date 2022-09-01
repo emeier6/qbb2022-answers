@@ -5,11 +5,17 @@
     #LOOK at file:
         #gzcat ALL.chr21.shapeit2_integrated_v1a.GRCh38.20181129.phased.vcf.gz | head
 
-#open plink in bash, running in base terminal    
-#plink
-#make the gz into vcf file with --vcf
-#look at the pca only first 3 columns with -- pca 3
-#--vcf ALL.chr21.shapeit2_integrated_v1a.GRCh38.20181129.phased.vcf.gz --pca 3
+## RUNNING PLINK
+    #open plink in bash, running in base terminal    
+    #plink
+        #Just by itself, needs command :)
+        #Genotype data format, PCA can run in any program
+            #get data in numeric, so vcf to parse and then convert to 0 1 and 2, python can do it in psychic (using PCA to convert into numberss)
+    #make the gz into vcf file with --vcf
+    #look at the pca only first 3 columns with -- pca 3
+    #--vcf ALL.chr21.shapeit2_integrated_v1a.GRCh38.20181129.phased.vcf.gz --pca 3
+        #converts genotypes to 1, 2, 3 (het, hom rec, hom alt)
+        #extracts a line from multidimensional space
 
 
 #OUTPUT: Results saved to plink.eigenval and plink.eigenvec .
@@ -77,3 +83,12 @@ plt.savefig("ex2_b.png")
 plt.close(fig)
 
 #OUTPUT: These two files are now saved as "ex2_1.png" and "ex2_b.png" and uploaded into github
+
+#sort each file, save each file differently
+    #might need to make sure it's tab deliminated
+    #unix command tr:
+        #translates characters and take one character 
+        #tr " " "\t" FILENAME
+    #unix command sed:
+        #stream editor, 
+#then join
