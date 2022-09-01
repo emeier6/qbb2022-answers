@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
 import sys
+import numpy as np
 import matplotlib.pyplot as plt
+
+
 
 vcf = sys.argv[1]
 fs = open( vcf )
@@ -16,25 +19,25 @@ for i, line in enumerate( fs ):
 
 fig, ax = plt.subplots()
 ax.hist( ac, density=True )
-#fig.savefig( vcf + ".png" ) #we are now making out own plots
-
 
 ax.set_yscale("log")
-ax.set_ylim(0,(1e-2))
-ax.set_ylabel("log(another one)")
+#ax.set_ylim(1,(1e-2))
+ax.set_ylabel("log(frequency of the alternate alleles count)")
 
-ax.set_xlabel("Something :^)")    
-ax.legend()
+ax.set_xlabel("AC (Count of alternate alleles in called genotypes)")    
 
 ax.set_title(vcf)
 
+#plt.show()
 
-plt.show()
-
-#fs.close()
-
+fig.savefig( vcf + ".png" ) #we are now making out own plots
 #plt.savefig("lncRNA.chr21.bed.vcf.png")
 #plt.close(fig)
 
-#JUST GOING TO RUN AND CHANGE processed_pseudogene.chr21.bed.vcf
-#RUNNING: python plot_vcf_ac.py processed_pseudogene.chr21.bed.vcf
+fs.close()
+
+
+#JUST GOING TO RUN AND CHANGE gencode.v41.annotation.gtf 
+#RUNNING: python plot_vcf_ac.py lncRNA.chr21.bed.vcf
+#less -S gencode.v41.annotation.gtf 
+#Adding my edited version of the 
