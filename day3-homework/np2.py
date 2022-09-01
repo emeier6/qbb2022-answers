@@ -20,7 +20,7 @@ for i, continent in enumerate(continents_list):
     print(row)
     xg.append(EigenInt["PCA1"][row])
     yg.append(EigenInt["PCA2"][row])
-    ax.scatter(xg[i], yg[i], label = continent, )
+    ax.scatter(xg[i], yg[i], label = continent)
 ax.set_ylabel("PC2")
 ax.set_xlabel("PC1")    
 ax.legend(loc="upper right")
