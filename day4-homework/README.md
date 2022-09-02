@@ -57,17 +57,19 @@
 		
 	C) Make two plots one with and one without corrections
 			CODE:
-			fig, (ax1, ax2) = plt.subplots(ncols=2)
-			sns.heatmap(power_twoD_Corr, ax=ax1, vmin = 0, vmax = 1, annot=True, cbar=False, annot_kws={"size": 7}, xticklabels=tosses, yticklabels=probs, cmap='cubehelix')
+			fig, (ax2, ax1) = plt.subplots(ncols=2, gridspec_kw={'width_ratios': [1, 1.3]})
+			sns.heatmap(power_twoD_Corr, ax=ax1, vmin = 0, vmax = 1, annot=True, cbar=True, annot_kws={"size": 7}, xticklabels=tosses, yticklabels=probs, cmap='viridis')
 			ax1.set_xlabel("Array of tosses")
 			ax1.set_ylabel("Array of probabilities")    
-			ax1.set_title("Corrected power matrix of \n (probability v. tosses) arrays")
+			ax1.set_title("Corrected", fontsize = 10)
 
-			sns.heatmap(power_twoD, vmin = 0, vmax = 1, ax=ax2, annot=True, cbar=False, annot_kws={"size": 7}, xticklabels=tosses, yticklabels=probs, cmap='cubehelix')
+			sns.heatmap(power_twoD, vmin = 0, vmax = 1, ax=ax2, annot=True, cbar=False, annot_kws={"size": 7}, xticklabels=tosses, yticklabels=probs, cmap='viridis')
 			ax2.set_xlabel("Array of tosses")
 			ax2.set_ylabel("Array of probabilities")    
-			ax2.set_title("Uncorrected power matrix of \n (probability v. tosses) arrays")
+			ax2.set_title("Uncorrected", fontsize = 10)
 
+			#fig.tight_layout()
+			fig.suptitle('Power matrix of probability versus tosses arrays', fontsize = 14)
 			#plt.show()
 
 			plt.savefig("Comp_Corr_NonCorr.png")
