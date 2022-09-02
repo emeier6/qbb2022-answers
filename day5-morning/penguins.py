@@ -93,13 +93,18 @@ ax.legend()
 #results = modelmultivar.fit()
 
 #print(results.summary())
+
 '''
     ANOVASSS - nesting models
 '''
-full_model = smf.ols(formula = "flipper_length_mm ~ 1 + species + sex", data = df).fit()
-reduced_model = smf.ols(formula = "flipper_length_mm ~ 1 + species", data = df).fit()
+#full_model = smf.ols(formula = "flipper_length_mm ~ 1 + species + sex", data = df).fit()
+#reduced_model = smf.ols(formula = "flipper_length_mm ~ 1 + species", data = df).fit()
+fullest_model = smf.ols(formula = "flipper_length_mm ~ 1 + sex + year + island", data = df).fit()
 
-print(sm.stats.anova_lm(reduced_model, full_model, typ = 1))
+#print(sm.stats.anova_lm(reduced_model, full_model, typ = 1))
+#print(fullest_model.summary())
+
+
 #Different types of ANOVAS with different interpretations. Here, we are just using type 1
 #QUESTION: does the full model better explain the data than the more simple model?
 '''
@@ -112,4 +117,14 @@ print(sm.stats.anova_lm(reduced_model, full_model, typ = 1))
     species matters, after controlling for sex
 '''
 
+
+'''
+    PREDICTING flipper length USING MODEL
+'''
+#female, island of Dream, year 2008
+#What is the predicted flipper length?
+
+#MODEL: 
+print(- 3957.9483 + 0 + 2.0736*2008 - 16.1405)
+    #OUTPUT:189.69999999999933 mm
 
