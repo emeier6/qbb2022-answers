@@ -10,9 +10,11 @@ from statsmodels.stats.multitest import multipletests
 tosses = numpy.array([10, 50, 100, 250, 500, 1000])
 probs = numpy.around(numpy.arange(0.55, 1.05, 0.05), decimals=2)[::-1]
 #print(numpy.arange(0.55, 1.05, 0.05))
-
 #print(probs)
-
+#[::-1 corresponds to [start 0 : stop 0 : step -1]
+#format string python, wc3 schools has a link with formatting types
+    #could be like print(f" {}") with print(ef" {}") to denote scientific notation, or print(2f" {}") to denote 2 decimal points
+    
 def simulate_coin_toss(n_tosses, prob_heads = 0.5, seed=None):
     '''
     Simulates a coin toss (fair or unfair depending on prob_heads)
@@ -104,6 +106,7 @@ power_twoD_Corr = numpy.zeros((len(probs), len(tosses)))
 for i, singleprob in enumerate(probs):
     for j, singletoss in enumerate(tosses):
         power_twoD_Corr[i,j] = run_experiment(singleprob, singletoss, correct_the_pvalues = True)
+
 #CHECK:print(power_twoD)
 #p<0.05 / number of thigs we are testing
 #this can be done by iterating through, which is what we are doing here...
@@ -125,17 +128,19 @@ power2b = run_experiment(0.95, 10)
 
 
 #Creating a heat map plot of the matrixed values = power_twoD
-fig, (ax1, ax2) = plt.subplots(ncols=2)
-sns.heatmap(power_twoD_Corr, ax=ax1, vmin = 0, vmax = 1, annot=True, cbar=False, annot_kws={"size": 7}, xticklabels=tosses, yticklabels=probs, cmap='cubehelix')
+fig, (ax2, ax1) = plt.subplots(ncols=2, gridspec_kw={'width_ratios': [1, 1.3]})
+sns.heatmap(power_twoD_Corr, ax=ax1, vmin = 0, vmax = 1, annot=True, cbar=True, annot_kws={"size": 7}, xticklabels=tosses, yticklabels=probs, cmap='viridis')
 ax1.set_xlabel("Array of tosses")
 ax1.set_ylabel("Array of probabilities")    
-ax1.set_title("Corrected power matrix of \n (probability v. tosses) arrays")
+ax1.set_title("Corrected", fontsize = 10)
 
-sns.heatmap(power_twoD, vmin = 0, vmax = 1, ax=ax2, annot=True, cbar=False, annot_kws={"size": 7}, xticklabels=tosses, yticklabels=probs, cmap='cubehelix')
+sns.heatmap(power_twoD, vmin = 0, vmax = 1, ax=ax2, annot=True, cbar=False, annot_kws={"size": 7}, xticklabels=tosses, yticklabels=probs, cmap='viridis')
 ax2.set_xlabel("Array of tosses")
 ax2.set_ylabel("Array of probabilities")    
-ax2.set_title("Uncorrected power matrix of \n (probability v. tosses) arrays")
+ax2.set_title("Uncorrected", fontsize = 10)
 
+#fig.tight_layout()
+fig.suptitle('Power matrix of probability versus tosses arrays', fontsize = 14)
 #plt.show()
 
 plt.savefig("Comp_Corr_NonCorr.png")
