@@ -81,6 +81,7 @@
 			
 		For every increase in education metric, we see an increase in income [broad] by 
 		'''
+#less -S of penguins.csv # to see the data structure
 
 
 
