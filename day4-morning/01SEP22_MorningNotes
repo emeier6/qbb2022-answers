@@ -1,0 +1,104 @@
+Day 4 - Morning
+01SEP22
+Emily K Meier
+
+Reproducibility:
+	#Importance - have another person replicate your results. This happens through both clear writing for clear comprehension, so that they could not only reproduce your results, but then also apply replicate a different albeit similar dataset.
+	
+	#Requirements:
+		1. Executable, lightly annotated code for clear understanding and a whole how-to guide
+		2. Data (not maybe the same set, but a good smaller set)
+		3. For the data and code 
+	
+			#How is your data managed? Do you still have access to the raw data and intermediates?
+			#What software and versions are you using?
+			#With collaborations, who did which steps?
+			#How are files organized and stored?
+			#Do you have previous versions of your documents, and are you tracking changes?
+				#GITHUB for EXCEL SOPs? Can these be private until ready to publish?
+	
+
+For the in class work:
+	#reference repository
+	1. Reproduce plots (look at the cache for check)
+	2. 
+
+
+
+
+(Bio)conda
+	#Software updates are important
+	#Conda attempts to fix this problem 
+		IE: specify the version you are using
+	
+	Initializing:
+		#To make a conda tool
+			conda create --name bcftools
+		#To enter the conda base:
+			conda activate bcftools
+		#To exit the conda:
+			conda deactivate
+
+	With Bioconda:
+		Repository can just install with #conda install# for up to 8000 packages!
+			IE: samtools - for sequencing data
+
+
+
+Git
+	#Keeping track of versions in Google Docs, but wordocs is still not the best
+	#When more than 1 version comes back, how to merge? Hard in word, easy in git
+		
+	Tracking changes:
+		1. Comprehensive - keep backups
+		2. Small changes - keep changes small, section by section
+		3. Explain - why did you make a change?
+		4. Remote copies - as well as computer base copies as backup
+		5. Share - for more frequent changes and edits, instead of a whole bunch all at once
+
+	Working Collaboratively :)
+		Works well: README.md files, any sort of language (bash, python, etc), images
+		Not works well: Manuscript in word (text would work, but not word)
+		
+	Mental models of Git:
+		*git pull - get new updates (from the web to computer) and a sync command
+		*git push - push a new update from computer to the web
+		*git clone - make a fresh copy of the entire database
+		*git checkout - get a particular version (HEAD is the newest saved version), only working on the computer and not from the web
+		*git branches - can track the changes to a project via different analyses, better than duplicating a file to try the same analysis in a different way. 
+		
+
+
+THE GIT GAME (now in cd repository)
+
+	git clone https://github.com/hgarc014/git-game.git
+
+	ls
+
+	cd git-game/
+
+	ls -a
+
+		cat README.md
+
+	got log
+
+	git checkout 64027380
+		
+		cat README.md
+
+	git branch -a
+
+	git checkout bug
+
+	ls 
+
+	cat cool.cpp
+
+	Questions:
+	
+	#1. Can you make and give permissions? - Yes
+
+	#2. Safer to give branch access than whole file access
+	
+	#3. 
