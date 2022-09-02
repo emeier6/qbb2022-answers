@@ -72,3 +72,13 @@ bash do_all.sh random_snippet.vcf gencode.v41.annotation.gtf
 				To set to the name of the vcf file we are inporting, and I am sure you could take out the vcf part. 
 				
 		-
+#Exercise3: Create documentation
+
+	Add documentation for bxlab/cmdb-plot-vcfs in day4-lunch/README.md including:
+
+	Synopsis – <50 words
+	Usage – syntax including input file requirements
+	Dependencies – software requirements
+	Description – how it works (bullet points or prose)
+	Output – example output
+	Look to other documentation like bedtools for inspiration
