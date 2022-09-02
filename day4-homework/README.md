@@ -73,5 +73,44 @@
 			plt.savefig("Comp_Corr_NonCorr.png")
 			plt.close(fig)
 		
-		-
+		-Uncorrected shows that at lower iteration numbers, the power is higher, aka the rate of false positives is higher.
+
+#D – Compare to a real study
+	A) THE BIOLOGY:
+		-As human sperm are diploid, it is assumed that there would be an equal likelihood of passing on each allele.
+		-Carioscia et al. (2022) use single-sperm sequencing to discuss an effect known as "transmission distortion" (TD).
+		-TD results in alleles being disproportionately passed on, as it is thought that some alleles affect aspects of fertility, including:
+			-include meiotic drive,
+			-gamete competition or killing,
+			-embryonic lethality, and
+			-mobile element insertion,
+		for the purpose of having a higher likelihood of passing on the allele. 
+	B) Figure S13 Summary:
+		-Here, we see the importance of power correction when looking at sperm transmission rate in comparison to sperm number.
+		-Using the Bonferroni-adjusted p-value, we see in figure B that the power decreases, thereby decreasing and attempting to account for false positives in the computation.
+		-The claim, which is supported in Fig S13, is that the Bonferroni-adjusted p-value increases the statistical power to call small TD at single loci by more than 80%.
+	C) compare the simulation experiment that you performed with the simulation experiment performed for Figure S13.
+		-Essentially, theFig S13 and the simulated/in-class generated figure "Comp_Corr_NonCorr" show the same thing:
+			General Trends:
+				-As sample size increases, the power to call smaller probabilities increases. However, there is still a threshold to call.
+				-Additionally, as the probability increases even in smaller iteration sizes, there is more power to call.
+			
+		-The parameter that corresponds to transmission rate (TD) is the probability, aka:
+				probs = numpy.around(numpy.arange(0.55, 1.05, 0.05), decimals=2)[::-1]
+				
+		-The parameters that corresponds to the Number of sperm axis is the tosses, aka:
+				tosses = numpy.array([10, 50, 100, 250, 500, 1000])
+				
+		-We use the binomial test and Bonferroni correction to ask how different our observed values are to the expected values. In this case, both expected values are 0.5 probability of either: heads or tails, or sperm alleles being passed on.
+		Uncorrected:
+			-We see a greater power given to both probability and iteration arrays, where as there are both less iterations and lower probabilities, there is still greater power to call.
+		Corrected:
+			-The Bonferroni-adjusted method and power correction allows us to decrease the power and ability to call.
+			-This is done by accounting for the number of false positives, which the alpha p-value level of significance threshold states that a p-value below 0.05 denotes that the difference in our observed versus expected values is significant.
+			-So, by accounting for a false-positive rate of 5% (0.05), we can adjust the p-value to the total number of samples/iterations we are testing.
+			-This is noted with p-value = 0.05 / #iterations or samples
+				-This is extremely important because as sample sizes increase, we expect a greater total number of false positives.
+				-Alternatively, smaller sample sizes are more likely to be affected by skew and false positives, so it is a better way to account for any sort of variation that could affect a call for significance.
 		
+				
+#E – Submit
