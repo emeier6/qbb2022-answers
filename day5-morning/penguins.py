@@ -4,6 +4,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import statsmodels.formula.api as smf
+import statsmodels.api as sm
 from scipy import stats
 
 #Easier parsing through just commas, compared to csv
@@ -88,7 +89,27 @@ ax.legend()
     MULTIPLE LINEAR REGRESSIONS
 '''
 
-modelmultivar = smf.ols(formula = "flipper_length_mm ~ 1 + species + sex + island + year", data = df)
-results = modelmultivar.fit()
+#modelmultivar = smf.ols(formula = "flipper_length_mm ~ 1 + species + sex + island + year", data = df)
+#results = modelmultivar.fit()
 
-print(results.summary())
+#print(results.summary())
+'''
+    ANOVASSS - nesting models
+'''
+full_model = smf.ols(formula = "flipper_length_mm ~ 1 + species + sex", data = df).fit()
+reduced_model = smf.ols(formula = "flipper_length_mm ~ 1 + species", data = df).fit()
+
+print(sm.stats.anova_lm(reduced_model, full_model, typ = 1))
+#Different types of ANOVAS with different interpretations. Here, we are just using type 1
+#QUESTION: does the full model better explain the data than the more simple model?
+'''
+    OUTPUT:
+      df_resid           ssr  df_diff      ss_diff        F        Pr(>F)
+    0     330.0  14692.753022      0.0          NaN      NaN           NaN
+    1     329.0  10787.149248      1.0  3905.603773  119.118  7.109600e-24
+    
+    Interpret:
+    species matters, after controlling for sex
+'''
+
+
