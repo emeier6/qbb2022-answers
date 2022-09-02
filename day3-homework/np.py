@@ -13,6 +13,8 @@ fig, ax = plt.subplots(nrows=1)
 sex_list = np.unique(EigenInt["sex"]) #field [7]
 continents_list = np.unique(EigenInt["Continent"])
 country_list = np.unique(EigenInt["Country"])
+    #array of the unique items
+    #does not need to be sorted in the case of uniq in bash
 xg = []
 yg = []
 for i, sex in enumerate(sex_list):
@@ -33,6 +35,8 @@ plt.savefig("ex3_c.png")
 plt.close(fig)
 
 #RUN:python np.py sortedEigenIntCalls
+
+
 
 #COUNTRY
 #cut -f 6 sortedEigenIntCalls | sort | uniq -c 
