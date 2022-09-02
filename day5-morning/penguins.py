@@ -124,7 +124,15 @@ fullest_model = smf.ols(formula = "flipper_length_mm ~ 1 + sex + year + island",
 #female, island of Dream, year 2008
 #What is the predicted flipper length?
 
-#MODEL: 
-print(- 3957.9483 + 0 + 2.0736*2008 - 16.1405)
+#MANUAL MODEL: 
+#print(- 3957.9483 + 0 + 2.0736*2008 - 16.1405)
     #OUTPUT:189.69999999999933 mm
 
+
+#THE forget FUNCTION
+new_data = df[0]
+new_data.fill(0)
+new_data['island'] = 'Dream'
+new_data['sex'] = 'female'
+new_data['year'] = 2008
+print(fullest_model.predict(new_data))
