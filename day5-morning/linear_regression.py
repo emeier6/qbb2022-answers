@@ -66,9 +66,21 @@
 			Library:   statsmodels.formula.api as smf
 				*Borrowing from R lmao
 			'''
+			#To tell the model to make a basic 1x variable linear regression from data
+#model = smf.ols(formula = "income ~ 1 + education", data = my_data)
+#results = model.fit()
+#results.summary()
+		#This prints out a nice results table with lots of information from the generated model
+		
+	'''Interpreting:
+		*Intersect: const to coef
+		*Slope: education to coef
+		*P-value: P>|t| in education to coef
+		*R^2 for how well the model fits the data, 
+			and therefore the predicted power of the model
+			
+		For every increase in education metric, we see an increase in income [broad] by 
+		'''
 
-model = smf.ols(formula = "income ~ 1 + education", data = my_data)
-results = model.fit()
-results.summary()
 
 
