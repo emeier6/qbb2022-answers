@@ -179,9 +179,16 @@ Day 5 Lunch: Linear Regression
 		
 	
 	6. Test whether the number of maternally inherited de novo mutations per proband is significantly different than the number of paternally inherited de novo mutations per proband.
+		print(stats.ttest_ind(df["father_mutation_count"], df["mother_mutation_count"]))
+		#OUTPUT:    
+		Ttest_indResult(statistic=53.323950583065304, pvalue=1.1656909236893846e-263
+			
+		VERY significant :^) males more mutation.
+
 	
+	7. Predict the number of paternal de novo mutations for a proband with a father who was 50.5 years old at the proband’s time of birth.
+		print(10.3887 + 1.3513*50.5)
+		#OUTPUT: 78.62935
 	
-	7. 
 
 
-			effect size than 
