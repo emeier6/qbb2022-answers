@@ -66,17 +66,22 @@
 	
 
 	C) 
-	cut -f 3 integrated_call_samples.panel | sort | uniq -c 
-	#allows us to sort by the 3rd column (super population) and then sort by the second column (population)
+	sort integrated_call_samples.panel | sort | grep "AFR" | cut -f 2 | sort | uniq -c 
+	
+	#allows us to grab values from AFR, sort, and then look  at just the populations and count unique values
 	#last uniq -c value tells us number of populations in the super population
-	1044 AFR
-	 535 AMR
-	 673 EAS
-	 670 EUR
-	 661 SAS
-	   1 super_pop
+	 123 ACB
+	 112 ASW
+	 173 ESN
+	 180 GWD
+	 122 LWK
+	 128 MSL
+	 206 YRI
 	 
-	 ANSWER: For the AFR population, we have 1044 populations.
+	 ANSWER: For the AFR population, we have 1044 populations AND 7 SUBPOPULATIONS
+	 
+	 They likely included so many because there are many Africa populations! They are not all based in Africa, but have integrated with areas all over the world due to the negative impacts of colonializm.
+	 However, it is important to have high representation of these groups. Truly, there should probably be more. 
 	 
 5. 	A) cd
 		cp ~/data/   /random_snippet.vcf
