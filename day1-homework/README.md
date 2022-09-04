@@ -150,33 +150,26 @@ Considering  T
 	  
 #Exercise 3:
 	#!/bin/bash
-
+	
 	#USAGE: bash exercise3.sh input_VCF
-
+	
 	#awk '/^#/{next} {print $1,$2-1, $2}' $1 > variants.bed
 	#awk -v OFS='\t' '/^#/{next} {print $1,$2-1, $2}' $1 > variants.bed
 	awk -v OFS='\t' '/^#/{next} {print $1,$2-1, $2}' $1 | sort -k1,1 -k2,2n > variants.bed
-
-
+	
 	sort -k1,1 -k2,2n ~/data/bed_files/genes.bed > genes.sorted.bed
 
-	bedtools closest -a variants.bed -b genes.sorted.bed > doubleysorted.bed
-
-
-
+	bedtools closest -a variants.bed -b genes.sorted.bed > doubleysorted.bed 
 	#1.Look at the script (exercise3.sh) and paraphrase in your README what you think each line is doing and why it is necessary given the documentation for bedtools closest. 
 		#What I think is happening is the the sort tool is grouping different columns to sort and then running the matrix of sorted columns in bedtools. 
 	
 	
 	#2.Using the usage statement provided at the beginning of the script (exercise3.sh), try to run the script using ~/data/vcf_files/random_snippet.vcf as the input VCF file.
-
+	
 	#USAGE: bash exercise3.sh ~/data/vcf_files/random_snippet.vcf
-
-
 
 	#3. ERROR1: unable to open file or unable to determine types for file variants.bed
 		#- Please ensure that your file is TAB delimited (e.g., cat -t FILE).
-
 		#FIXING ERROR1: 
 			#awk '/^#/{next} {print $1,$2-1, $2}' $1 > variants.bed
 			#TO CORRECT: 
