@@ -26,46 +26,66 @@ def parse_bed(fname):
         #looking if 10 or 11, then we have a problem
         if  (fieldN <= 2 or fieldN <= 9 or fieldN >= 12):
             print("Contains the expected the number of columns (3-9, 12)", file=sys.stderr)
-        if not (fieldN < 3 or fieldN <= 9 or fieldN >= 12):
+        else (fieldN < 3 or fieldN <= 9 or fieldN >= 12):
             #f is fancy way of autofill with the incorrect line
             print(f"Line {i} appears malformed1", file=sys.stderr)
             continue
             
         #if fieldN == 9 has 3 in the string converting to a line:
+        field8 = []
         if len(fields[8].split(",")) == 3:    
-            print("Contains 3 values in RGB")
-        if not len(fields[8].split(",")) == 3:
+            #print("Contains 3 values in RGB")
+            field8.append(fields[8].split(","))
+        else i, len(fields[8].split(",")) >= 3:
             print(f"Line {i} is not equal to 3 :(", file=sys.stderr)
+            continue
             
-        if fields[9].endswith(","):
-            print("blockCount ends with ,") 
-        if not fields[9].endswith(","):
-            print("blockCount does NOT end with ,") 
+        if len(fields) > 9:
+            field9 = []
+            if fields[9].endswith(","):
+                #print("blockCount ends with ,") 
+                field9.append(fields[9].rstrip(","))
+            else:
+                #print("blockCount does NOT end with ,") 
+                continue
                 
-        if fields[10].endswith(","):
-            print("blockSize ends with ,")
-        if not fields[10].endswith(","):
-            print("blockSize does NOT end with ,")
-            
-        if fields[11].endswith(","):
-            print("blockStart ends with ,")
-        if not fields[11].endswith(","):
-            print("blockStart does NOT end with ,")  
-            
-        ####or is this saying
-        #if (len(fields[10]) + len(fields[11])) == len(fields[9]):
-        #    print("the blockSizes + blockStarts = blockCount!")
-        #if not (len(fields[10]) + len(fields[11])) == len(fields[9]):
-        #    print("the blockSizes + blockStarts DO NOT = blockCount!")
-        if len(fields[10]) == len(fields[9]):
-            print("blockSize = blockCount!")
-        if not len(fields[10]) == len(fields[9]):
-            print("blockSize DOES NOT = blockCount!")
+            field10 = []    
+            if fields[10].endswith(","):
+                print("blockSize ends with ,")
+                field10.append(fields[10].rstrip(","))
+            else:
+                #print("blockSize does NOT end with ,")
+                continue
+                
+            field11 = []
+            if fields[11].endswith(","):
+                #print("blockStart ends with ,")
+                field11.append(fields[11].rstrip(","))
+                
+            else:
+                #print("blockStart does NOT end with ,")  
+                continue
+            ####or is this saying
+            #if (len(fields[10]) + len(fields[11])) == len(fields[9]):
+            #    print("the blockSizes + blockStarts = blockCount!")
+            #if not (len(fields[10]) + len(fields[11])) == len(fields[9]):
+            #    print("the blockSizes + blockStarts DO NOT = blockCount!")
+            counter = 0
+            if len(field10) == len(field9):
+                print("blockSize = blockCount!")
+            else len(field10) == len(field9):
+                #print("blockSize DOES NOT = blockCount!")
+                counter += 1
+            print(counter)    
         
-        if len(fields[11]) == len(fields[9]):
-            print("blockStarts = blockCount!")
-        if not len(fields[11]) == len(fields[9]):
-            print("blockStarts DOES NOT = blockCount!")
+        
+            counter = 0
+            if len(field11) == len(field9):
+                print("blockStarts = blockCount!")
+            else len(field11) == len(field9):
+                #print("blockStarts DOES NOT = blockCount!")
+                counter +=1
+            print(counter)
             
         try:
             #loop through numbers 0 to 5 not including 6
@@ -74,7 +94,7 @@ def parse_bed(fname):
                 fields[j] = field_types[j](fields[j])
             bed.append(fields)
         except:
-            print(f"Line {i} appears malformed", file=sys.stderr)
+            print(f"Line {j} appears malformed", file=sys.stderr)
 #            counter = counter + 1
  #           print(counter)
     fs.close()
