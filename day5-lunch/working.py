@@ -63,12 +63,13 @@ for i, line in enumerate( fs ):
 #df = smf.ols(formula = "mother_mutation_count ~ 1 + mother_age", data = df)
 #results = df.fit()
 #print(results.summary())
+df = np.genfromtxt("1043aau_mf_age_joined.vcf", delimiter = " ", dtype = None, encoding = None, names = ["Proband_id", "father_mutation_count", "father", "mother_mutation_count", "mother", "father_age", "mother_age"])
 
 
 
-#df = smf.ols(formula = "father_mutation_count ~ 1 + father_age", data = df)
-#results = df.fit()
-#print(results.summary())
+df = smf.ols(formula = "father_mutation_count ~ 1 + father_age", data = df)
+results = df.fit()
+print(results.summary())
 
 
 
@@ -77,7 +78,6 @@ for i, line in enumerate( fs ):
 
 
 ################   HIST ############################################
-df = np.genfromtxt("1043aau_mf_age_joined.vcf", delimiter = " ", dtype = None, encoding = None, names = ["Proband_id", "father_mutation_count", "father", "mother_mutation_count", "mother", "father_age", "mother_age"])
 
 
 fig, ax = plt.subplots()
