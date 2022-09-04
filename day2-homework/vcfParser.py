@@ -112,6 +112,8 @@ def parse_vcf(fname):
                     #these lists are called temps
                     if len(temp) == 1:
                         info[temp[0]] = None
+                    else len(temp) > 1:
+                        info[temp[1]] = temp[2]
                     #if the list is the first of two values without a second value, then we write that as [AC:None], because there is no second value.
                     #temp 0 is the first value, and if the second value is not present, then we are saying it does not have a second value.
 
