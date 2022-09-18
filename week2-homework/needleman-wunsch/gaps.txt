@@ -1,0 +1,15 @@
+Gaps in AA sequence:
+
+Sequence 1: 9
+
+Sequence 2: 0
+
+
+
+
+Gaps in DNA sequence:
+
+Sequence 1: 46
+
+Sequence 2: 78
+
