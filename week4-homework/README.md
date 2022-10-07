@@ -119,16 +119,36 @@
 	# samples = genotypes[:,9]
 	genotypes = parsed_vcf[]
 
+	rs_index = []
+	for row in parsed_vcf:
+	    if row[2] == 'rs10876043':
+	        rs_index.append(row)
+    
+	print(rs_index)
+	##OMFG I GOT IT ON MY OWN. Understanding syntax now!! Only took me an hour :,^) but progress!!
 
 	homdom = []
 	het = []
 	homrecess = []
-	for snv in genotypes:
-	    if snv == "0/0":
+	counter0 = 0
+	counter1 = 0
+	counter2 = 0
+	counter3 = 0
+
+	for i in rs_index:
+	    if i == './.':
+	        counter0 =+ 1
+	        continue
+	    elif i == '0/0':
+	        counter1 =+ 1
 	        homrecess.append()
-	    elif snv == "0/1" and "1/0":
+	    elif i == '0/1' and i == '1/0':
+	        counter2 =+ 1
 	        het.append()
-	    elif snv == "1/1":
-	        homrecess.append()
-        
-	print(homdom)
+	    elif i == '1/1':
+	        counter3 =+ 1
+	        homdom.append()
+	    # else:
+	#         continue
+	print(homdom)        
+	print(counter)
