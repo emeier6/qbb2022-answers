@@ -113,21 +113,46 @@ print(association[min][1])
 
 
 parsed_vcf = parse_vcf("genotypes.vcf")[1:]
-snv = rs10876043
-
+# print(parsed_vcf)
+# snv = np.where(parsed_vcf[rs10876043])
+# print(snv)
 # samples = genotypes[:,9]
-genotypes = parsed_vcf[]
+# genotypes = parsed_vcf[]
 
+# print(parsed_vcf[:][2])
 
 homdom = []
 het = []
 homrecess = []
-for snv in genotypes:
-    if snv == "0/0":
-        homrecess.append()
-    elif snv == "0/1" and "1/0":
-        het.append()
-    elif snv == "1/1":
-        homrecess.append()
-        
+counter0 = 0
+counter1 = 0
+counter2 = 0
+counter3 = 0
+
+for row in parsed_vcf:
+    for i in row:
+        # print(i)
+        if i == "rs10876043":
+             if parsed_vcf[9:] == "./.":
+                 counter0 =+ 1
+                 continue
+             elif genotypes[9:] == "0/0":
+                 counter1 =+ 1
+                 homrecess.append()
+             elif genotypes[9:] == "0/1" and "1/0":
+                 counter2 =+ 1
+                 het.append()
+             elif genotypes[9:] == "1/1":
+                 counter3 =+ 1
+                 homdom.append()
+         else:
+             continue
+           
+        # homrecess.append(parsed_vcf[9:] == "0/0")
+        # het.append(parsed_vcf[9:] == "0/1" and "1/0")
+        # homrecess.append(parsed_vcf[9:] == "1/1")
+
+    
+  
 print(homdom)        
+
