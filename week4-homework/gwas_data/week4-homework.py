@@ -79,7 +79,7 @@ pvalue = association[:,8].astype(float)
 y = -np.log10(pvalue)
 x = np.arange(0, len(association[:,2]))
 
-print(pvalue)
+# print(pvalue)
 threshold = 10e-5
 
 cols = []
@@ -105,14 +105,16 @@ ax.set_xlabel("SNVs across chromosomes")
 
 # Looking at CB1908
 # print(association)
-min = np.argmin(pvalue)
+# min = np.argmin(pvalue)
 #print(min) = 188404
 
-print(association[min][1])
+# print(association[min][1])
 # rs10876043
 
 
 parsed_vcf = parse_vcf("genotypes.vcf")[1:]
+headers = parse_vcf("genotypes.vcf")[0]
+# print(headers)
 # print(parsed_vcf)
 # snv = np.where(parsed_vcf[rs10876043])
 # print(snv)
@@ -120,6 +122,18 @@ parsed_vcf = parse_vcf("genotypes.vcf")[1:]
 # genotypes = parsed_vcf[]
 
 # print(parsed_vcf[:][2])
+
+# rs_index = []
+# # for row in parsed_vcf:
+# #     if row[3] == 'rs10876043':
+# #         rs_index.append()
+rs_index = []
+for row in parsed_vcf:
+    if row[2] == 'rs10876043':
+        rs_index.append(row)
+    
+# print(rs_index)
+##OMFG I GOT IT ON MY OWN. Understanding syntax now!! Only took me an hour :,^) but progress!!
 
 homdom = []
 het = []
@@ -129,24 +143,61 @@ counter1 = 0
 counter2 = 0
 counter3 = 0
 
-for row in parsed_vcf:
-    for i in row:
-        # print(i)
-        if i == "rs10876043":
-             if parsed_vcf[9:] == "./.":
-                 counter0 =+ 1
-                 continue
-             elif genotypes[9:] == "0/0":
-                 counter1 =+ 1
-                 homrecess.append()
-             elif genotypes[9:] == "0/1" and "1/0":
-                 counter2 =+ 1
-                 het.append()
-             elif genotypes[9:] == "1/1":
-                 counter3 =+ 1
-                 homdom.append()
-         else:
-             continue
+for i in rs_index:
+    if i == './.':
+        counter0 =+ 1
+        continue
+    elif i == '0/0':
+        counter1 =+ 1
+        homrecess.append()
+    elif i == '0/1' and i == '1/0':
+        counter2 =+ 1
+        het.append()
+    elif i == '1/1':
+        counter3 =+ 1
+        homdom.append()
+    # else:
+#         continue
+print(homdom)        
+print(counter1)
+    # if row == "":
+#         rs.append()
+#     else:
+#         continue
+# print(rs)
+        # if row == "./.":
+#             counter0 =+ 1
+#             continue
+#         elif row == "0/0":
+#             counter1 =+ 1
+#             homrecess.append()
+#         elif row == "0/1" and "1/0":
+#             counter2 =+ 1
+#             het.append()
+#         elif row == "1/1":
+#             counter3 =+ 1
+#             homdom.append()
+#     else:
+#         continue
+#
+        #
+    # for position in row:
+    #     print(position)
+    #     if position == "rs10876043":
+    #          if i == "./.":
+    #              counter0 =+ 1
+    #              continue
+    #          elif i == "0/0":
+    #              counter1 =+ 1
+    #              homrecess.append()
+    #          elif i == "0/1" and "1/0":
+    #              counter2 =+ 1
+    #              het.append()
+    #          elif i == "1/1":
+    #              counter3 =+ 1
+    #              homdom.append()
+    #     else:
+    #          continue
            
         # homrecess.append(parsed_vcf[9:] == "0/0")
         # het.append(parsed_vcf[9:] == "0/1" and "1/0")
