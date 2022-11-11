@@ -5,7 +5,9 @@
 
 import numpy as np
 import numpy.lib.recfunctions as rfn
-import scipy as sci
+import scipy.cluster.hierarchy as sci
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 
 input_arr = np.genfromtxt("dros_gene_expression.csv", delimiter=',', names=True, dtype=None, encoding='utf-8')
 
@@ -41,6 +43,47 @@ log_trans_filt = np.log2(filtered_fpkm + 0.1)
 
 '''Clustering the data by sample AND transcript'''
 
-rows = sci.cluster.hierarchy.linkage(log_trans_filt)
+rows = sci.linkage(log_trans_filt)
+# print(rows) checking that looks fine
+x = np.array(rows)
+# print(x)
 
-columns = sci.cluster.hierarchy.leaves_list(log_trans_filt)
+columns = sci.linkage(log_trans_filt)
+# print(columns)
+y = np.array(columns)
+# print(y)
+dis_wan = sci.linkage(log_trans_filt)
+
+# print(log_trans_filt)
+Zo = np.array(log_trans_filt)
+# print(Zo)
+# print(Zo.T)
+'''Linkage is a plotting function'''
+# IE: will use the row values to assign the distance matrix as a tree
+# X = [[i] for i in [2, 8, 0, 4, 1, 9, 9, 0]]
+# Z = linkage(rows, 'single')
+
+# Z = ward(pdist(X))
+
+Z = sci.linkage(Zo, 'ward')
+fig, ax = plt.subplots(figsize = len(x))
+# Adding the heatmap to the log transformed data
+ax.imshow(Z)
+
+# Show all ticks and label them with the respective list entries
+# ax.set_xticks(np.arange(len(rows)), labels=row_names)
+# ax.set_yticks(np.arange(len(columns)), labels=col_names)
+
+# Rotate the tick labels and set their alignment.
+# plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
+
+
+# dn = dendrogram(Z)
+
+
+ax.set_title("log2 of transformed and filtered FPKM")
+# >>> fig = plt.figure(figsize=(25, 10))
+fig.tight_layout()
+plt.show()
+
+
