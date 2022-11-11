@@ -42,3 +42,50 @@
 	# Looks good!
 	
 # 1: Clustering
+	'''Clustering the data by sample AND transcript'''
+
+	rows = sci.linkage(log_trans_filt)
+	# print(rows) checking that looks fine
+	x = np.array(rows)
+	# print(x)
+
+	columns = sci.linkage(log_trans_filt)
+	# print(columns)
+	y = np.array(columns)
+	# print(y)
+	dis_wan = sci.linkage(log_trans_filt)
+
+	# print(log_trans_filt)
+	Zo = np.array(log_trans_filt)
+	# print(Zo)
+	# print(Zo.T)
+	'''Linkage is a plotting function'''
+	# IE: will use the row values to assign the distance matrix as a tree
+	# X = [[i] for i in [2, 8, 0, 4, 1, 9, 9, 0]]
+	# Z = linkage(rows, 'single')
+
+	# Z = ward(pdist(X))
+
+	Z = sci.linkage(Zo, 'ward')
+	fig, ax = plt.subplots(figsize = len(x))
+	# Adding the heatmap to the log transformed data
+	ax.imshow(Z)
+
+	# Show all ticks and label them with the respective list entries
+	# ax.set_xticks(np.arange(len(rows)), labels=row_names)
+	# ax.set_yticks(np.arange(len(columns)), labels=col_names)
+
+	# Rotate the tick labels and set their alignment.
+	# plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
+
+
+	# dn = dendrogram(Z)
+
+
+	ax.set_title("log2 of transformed and filtered FPKM")
+	# >>> fig = plt.figure(figsize=(25, 10))
+	fig.tight_layout()
+	plt.show()
+
+
+	
