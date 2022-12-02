@@ -7,29 +7,29 @@ import tensorflow as tf
 
 # Helper libraries
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib as plt
 
 print(tf.__version__)
 
 
-# fashion_mnist = tf.keras.datasets.fashion_mnist
+fashion_mnist = tf.keras.datasets.fashion_mnist
 #
-# (train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
+fashion_mnist.load_data((train_images, train_labels), (test_images, test_labels))
 
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
                
 train_images.shape
-len(train_labels)
-train_labels
+print(len(train_labels))
+
 
 test_images.shape
-len(test_labels)
+print(len(test_labels))
 
-# plt.figure()
-# plt.imshow(train_images[0])
-# plt.colorbar()
-# plt.grid(False)
-# plt.show()
+plt.figure()
+plt.imshow(train_images[0])
+plt.colorbar()
+plt.grid(False)
+plt.show()
 
 
 train_images = train_images / 255.0
@@ -44,14 +44,14 @@ for i in range(25):
     plt.grid(False)
     plt.imshow(train_images[i], cmap=plt.cm.binary)
     plt.xlabel(class_names[train_labels[i]])
-plt.show()               
+plt.show()
 
 model = tf.keras.Sequential([tf.keras.layers.Flatten(input_shape=(28, 28)), tf.keras.layers.Dense(128, activation='relu'), tf.keras.layers.Dense(10)])
 
 model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
-              
+
 model.fit(train_images, train_labels, epochs=10)
 
 test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
@@ -59,7 +59,7 @@ test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
 print('\nTest accuracy:', test_acc)
 
 probability_model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
-                                         
+
 predictions = probability_model.predict(test_images)
 
 predictions[0]
@@ -117,8 +117,8 @@ def plot_value_array(i, predictions_array, true_label):
 
   thisplot[predicted_label].set_color('red')
   thisplot[true_label].set_color('blue')
-  
-  
+
+
 i = 0
 plt.figure(figsize=(6,3))
 plt.subplot(1,2,1)
@@ -170,4 +170,4 @@ plot_value_array(1, predictions_single[0], test_labels)
 _ = plt.xticks(range(10), class_names, rotation=45)
 plt.show()
 
-np.argmax(predictions_single[0])
+# np.argmax(predictions_single[0])
