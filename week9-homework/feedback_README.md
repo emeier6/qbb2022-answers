@@ -4,4 +4,5 @@ This is a great start. There are a few more things we need from you for this to 
 3. We still need your code for the regression (both models), the QQ plot for the model without sex, the volcano plot for the model with sex, and a comparison of the significant (10% FDR) transcripts between the two models (-5 points)
 
 Let us know if you have any questions!
+
 (4.6/10)
