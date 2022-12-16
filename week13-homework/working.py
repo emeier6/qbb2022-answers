@@ -56,7 +56,7 @@ std_fitness = np.std(history, axis=1)
 '''Numpy one'''
 binomial = np.random.binomial(n, p)
 
-s = np.random.binomial(n, p, 1000)
+s = np.random.binomial(n, p, 1000en )
 
 # statistics = sci.stats.binom( )
 # random_gen = random.Generator.binomial( )
