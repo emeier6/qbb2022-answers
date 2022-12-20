@@ -5,7 +5,7 @@ Great work on this Emily! I'm sorry the last part was such a struggle, but I hav
 Okay, so how can we speed up the analysis for Step 3. You've got the right idea that we want to look at the taxonomy of all of the contigs within each bin. But, as you learned yourself, some of the bins can have a TON of contigs. So, how do we go about dealing with that? What I would suggest is--for each bin--looping through all of the contigs within that bin, and for each, grepping it against the `assembly.kraken` file. One way to structure this might be:
 
 ```
-for contig_id in $(grep ">" bin.1.fa |  cut -d ">" -f 2)
+for contig_id in $(grep ">" bin.1.fa | cut -d ">" -f 2)
 do
     grep $contig_id assembly.kraken
 done
