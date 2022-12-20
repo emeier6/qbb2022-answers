@@ -3,6 +3,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy as sci
+from scipy.stats import binom
+
 
 # Starting allele frequency
 p = 0.6334
@@ -56,7 +58,7 @@ std_fitness = np.std(history, axis=1)
 '''Numpy one'''
 binomial = np.random.binomial(n, p)
 
-s = np.random.binomial(n, p, 1000en )
+s = np.random.binomial(n, p, 1000 )
 
 # statistics = sci.stats.binom( )
 # random_gen = random.Generator.binomial( )
@@ -66,7 +68,59 @@ print(summary)
 # Check: 0.38735s
 
 '''Plotting :^) '''
+n, p = 10, .5  # number of trials, probability of each trial
+s = np.random.binomial(n, p, 1000)
+# result of flipping a coin 10 times, tested 1000 times.
+sum(np.random.binomial(9, 0.1, 20000) == 0)/20000
 
 
 
+rng = np.random.default_rng()
+n, p = 10, .5  # number of trials, probability of each trial
+s = rng.binomial(n, p, 1000)
+# result of flipping a coin 10 times, tested 1000 times.
+sum(rng.binomial(9, 0.1, 20000) == 0)/20000.
+# answer = 0.38885, or 39%.
 
+
+n = 6
+p = 0.6
+# defining the list of r values
+r_values = list(range(n + 1))
+# obtaining the mean and variance 
+mean, var = binom.stats(n, p)
+# list of pmf values
+dist = [binom.pmf(r, n, p) for r in r_values ]
+# printing the table
+print("r\tp(r)")
+for i in range(n + 1):
+    print(str(r_values[i]) + "\t" + str(dist[i]))
+# printing mean and variance
+print("mean = "+str(mean))
+print("variance = "+str(var))
+
+
+# setting the values
+# of n and p
+n = 6
+p = 0.6
+# defining list of r values
+r_values = list(range(n + 1))
+# list of pmf values
+dist = [binom.pmf(r, n, p) for r in r_values ]
+# plotting the graph 
+plt.bar(r_values, dist)
+plt.show()
+
+# fig, ax = plt.subplots()
+#
+# # Plotting
+# ax.imshow(mat1, cmap = 'magma')
+# ax.set_title('dCTCF')
+#
+# ax.set_title('ddCTCF - dCTCF')
+# plt.tight_layout()
+# plt.show()
+#
+#
+# #plt.savefig("binomial_permutations")
