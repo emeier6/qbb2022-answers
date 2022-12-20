@@ -1,0 +1,1 @@
+NODE_48_length_91091_cov_192.361330	root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Tissierellia;Tissierellales;Peptoniphilaceae;Finegoldia;Finegoldia magna;Finegoldia magna ATCC 29328

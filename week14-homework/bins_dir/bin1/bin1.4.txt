@@ -1,0 +1,1 @@
+NODE_396_length_21162_cov_170.926423	root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Clostridia;Clostridiales;Clostridiaceae;Clostridium;Clostridium novyi;Clostridium novyi NT

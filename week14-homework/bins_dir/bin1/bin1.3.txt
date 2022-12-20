@@ -1,0 +1,1 @@
+NODE_31_length_114355_cov_167.687393	root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Bacilli;Lactobacillales;Streptococcaceae;Streptococcus;Streptococcus anginosus group;Streptococcus anginosus;Streptococcus anginosus C238

@@ -1,0 +1,1 @@
+NODE_90_length_68573_cov_147.031802	root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Clostridia;Clostridiales;Clostridiaceae;Clostridium
