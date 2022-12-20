@@ -175,5 +175,119 @@
 	grep NODE_14_length_235766_cov_39.967778 metagenomics_data/step0_givendata/KRAKEN/assembly.kraken
 	
 	bins.1.fa
-	while read p; do grep p asembly.kraken; done < ~/qbb-answers/week14-homework/bin1 | cut -f 2 | sort | uniq -c | sort
+	head bins.1.fa 
+	grep ">" bins.1.fa | cut -f 2 | sort | uniq -c | sort | less -S
+	#   OUTPUT:
+	   1 >NODE_15_length_235270_cov_153.562668
+	   1 >NODE_19_length_199764_cov_200.017410
+	   1 >NODE_31_length_114355_cov_167.687393
+	   1 >NODE_396_length_21162_cov_170.926423
+	   1 >NODE_3_length_498518_cov_181.760000
+	   1 >NODE_48_length_91091_cov_192.361330
+	   1 >NODE_5_length_427301_cov_143.861656
+	   1 >NODE_90_length_68573_cov_147.031802
+	   
+	grep NODE_15_length_235270_cov_153.562668 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin1.1.txt
+	   #root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Tissierellia;Tissierellales;Peptoniphilaceae;Finegoldia;Finegoldia magna;Finegoldia magna ATCC 29328
+	grep NODE_19_length_199764_cov_200.017410 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin1.2.txt
+	   #root;cellular organisms;Bacteria;Terrabacteria group
+	grep NODE_31_length_114355_cov_167.687393 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin1.3.txt
+	   #Streptococcus anginosus;Streptococcus anginosus C238
+	grep NODE_396_length_21162_cov_170.926423 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin1.4.txt
+	   #root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Clostridia;Clostridiales;Clostridiaceae;Clostridium;Clostridium novyi;Clostridium novyi NT
+	grep NODE_3_length_498518_cov_181.760000 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin1.5.txt
+	   #root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Tissierellia;Tissierellales;Peptoniphilaceae;Anaerococcus;Anaerococcus prevotii;Anaerococcus prevotii DSM 20548
+	grep NODE_48_length_91091_cov_192.361330 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin1.6.txt
+		#root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Tissierellia;Tissierellales;Peptoniphilaceae;Finegoldia;Finegoldia magna;Finegoldia magna ATCC 29328
+	grep NODE_5_length_427301_cov_143.861656 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin1.7.txt
+	   #root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Tissierellia;Tissierellales;Peptoniphilaceae;Anaerococcus;Anaerococcus prevotii;Anaerococcus prevotii DSM 20548
+	grep NODE_90_length_68573_cov_147.031802 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin1.8.txt
+	   #root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Clostridia;Clostridiales;Clostridiaceae;Clostridium
+	   
+	
+	
+	* There must be a faster way to do this... or imma go crazy :^)   
+	   
+	   
+	while read p; do grep p assembly.kraken; done < ~/qbb2022-answers/week14-homework/bins_dir/bins.2.fa | cut -f 2 | sort | uniq -c | sort 
+	while read p; do grep p assembly.kraken; done < ~/qbb2022-answers/week14-homework/bins_dir/bins.2.fa | cut -f 2 | uniq -c | sort 
+	
+	
+	I am really tired and the previous code is taking ages to run :( Eventhough that should be a solid grep loop, and I really don't want to go through every single pull from each bin and comment :(((
+		
+		
+	But I am fighting my demons with this for loop so I just might :(
+		Alright, we ballin, it has been 15 minutes with the previous while loop code and it still hasnt run so here we go :,|
+	
+	grep ">" bins.2.fa | cut -f 2 | sort | uniq -c | sort | less -S	
+	NOOOOOOOOOOOOOOO WHY ARE THERE SO MANY
+	
+	uhhh
+	 
+	 hmm. 
+	 
+	grep ">" bins.3.fa | cut -f 2 | sort | uniq -c | sort | less -S	
+	I am sad and not feeling smart, but there is literally nothing online that can help me. I am dumb. 
+	
+	grep ">" bins.4.fa | cut -f 2 | sort | uniq -c | sort | less -S	
+	Thank GOD there are only 3 :,^)
+	#OUtput:
+		1 >NODE_108_length_61778_cov_2570.223936
+		1 >NODE_10_length_279092_cov_2597.445937
+		1 >NODE_8_length_298793_cov_2547.011572
+	
+	grep NODE_108_length_61778_cov_2570.223936 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin4.1.txt
+	#Root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Bacilli;Lactobacillales;Enterococcaceae;Enterococcus;Enterococcus faecalis;Enterococcus faecalis OG1RF
+	grep NODE_10_length_279092_cov_2597.445937 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin4.2.txt
+	# root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Bacilli;Lactobacillales;Enterococcaceae;Enterococcus;Enterococcus faecalis;Enterococcus faecalis D32
+	grep NODE_8_length_298793_cov_2547.011572 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin4.3.txt
+	# root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Bacilli;Lactobacillales;Enterococcaceae;Enterococcus;Enterococcus faecalis;Enterococcus faecalis str. Symbioflor 1
+	
+	grep ">" bins.5.fa | cut -f 2 | sort | uniq -c | sort | less -S	
+	#OUTPUT:
+	1 >NODE_11_length_278925_cov_118.155370
+	1 >NODE_13_length_256100_cov_129.382675
+	1 >NODE_17_length_211501_cov_125.925508
+	1 >NODE_186_length_42458_cov_125.041955
+	1 >NODE_18_length_205318_cov_122.610529
+	1 >NODE_208_length_37864_cov_119.516332
+	1 >NODE_240_length_34172_cov_118.910836
+	1 >NODE_269_length_31863_cov_127.044831
+	1 >NODE_4_length_455101_cov_112.371015
+	1 >NODE_6_length_320041_cov_123.475336
+	1 >NODE_7_length_310076_cov_130.336474
+	1 >NODE_9_length_293536_cov_118.600107
+	:(((((((
+		
+	grep ">" bins.6.fa | cut -f 2 | sort | uniq -c | sort | less -S	
+	1 >NODE_16_length_219929_cov_2350.909321
+	1 >NODE_1_length_1447137_cov_2268.097092
+	1 >NODE_2_length_556123_cov_2361.439230
+	
+	grep NODE_16_length_219929_cov_2350.909321 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin6.1.txt
+	# root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Bacilli;Lactobacillales;Enterococcaceae;Enterococcus;Enterococcus faecalis;Enterococcus faecalis V583
+	grep NODE_1_length_1447137_cov_2268.097092 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin6.2.txt
+	# root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Bacilli;Lactobacillales;Enterococcaceae;Enterococcus;Enterococcus faecalis;Enterococcus faecalis OG1RF
+	grep NODE_2_length_556123_cov_2361.439230 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin6.3.txt
+	# root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Bacilli;Lactobacillales;Enterococcaceae;Enterococcus;Enterococcus faecalis;Enterococcus faecalis V583
+	
+	
+	(A) Within your README, record your predictions for each bin?
+	Bin 1 is mosly Tissierellia and its subspeciees, and then some clostridia, and streptoccocus anginosus.
+	Bin 2
+	Bin 3
+	Bin 4 is symbiofluor and E. faecalis, of 2 different strains. 
+	Bin 5
+	Bin 6 All E. faecalis.
+	
+	Please... i am so tired and this is too much work all because I can't write a while loop in bash without crashing my computer. Why am i so dumbbbbbbb
+	Yo.. I can't submit my fa files that I made because I dont have permission??? I just made these omfl
+	
+	(B) This approach to classification is fast, but not very quantitative. Within your README, propose one method to more robustly infer the taxonomy of a metagenomic bin.
+	Is it fast? But maybe looking at 16S signatures from sequenced data, which this is. Nevermind, maybe it is just faster to group them by larger taxonomy (ie: lactic acid or acetic acid bacteria).
+	Maybe look at overlapping bins and see what is most prevalent? But that wouldn't be more sensitive. 
+	Maybe, just doing the most abundant taxonomy sorting, or something like that. Surely one can do a ML tree of the most likely and abundant sequences and just call it more generally there. 
+	
+	Idk man, I am tired. Thank yall TAs for carrying us through this semester. I appreciate you all!
+	
 	
