@@ -50,20 +50,33 @@
 	
 	Question 1: In your README, briefly comment on the trends you see in the gut microbiota throughout the first week.
 	
-	Lots of bacteria, predominantly Enterococcus faecalis for all. Some with smaller and slightly different amounts of bacteria, but generally all the same. 
-	
 	open SRR492186.html
+	#Mostly E. faecalis, very little staph, and no actinobacteria
 	open SRR492183.html
+	#Lots of bacteria, predominantly Enterococcus faecalis for all, some actinobacteria, and some staphyloccocus epedermis. Some with smaller and slightly different amounts of bacteria, but generally all the same. 
 	open SRR492189.html
+	#Mostly the same as '86.
 	open SRR492190.html
+	#No actinobacteria, about 14% staph.
 	open SRR492193.html
+	#Teeny bit actinobacteria, about 17% staph, and mostly E. faecalis. Similar to '83
 	open SRR492194.html
+	#Mostly same as '93
 	open SRR492197.html
+	#HUGE amounts of actinobacteria compared to the others (27%), and 60% E. faecalis (Usially in the 80s-90s). Could be diseased state?
+	
 
 # Step 2: Deconvolute the assembled scaffolds into individual genomes (binning)
 	Question 2: In your README, comment on what metrics in the contigs could we use to group them together?
-	We have the forward and reverse sequences.
 	
+	Contigs are contiguous fragments of DNA sequence from an incomplete draft genome.
+	We have the forward and reverse sequences, which we can use longer sequences to better align to a genome. Short regions can be incorrectly assembled into one contig due to a short region of similar sequence.
+	MetaBat2 is cool becauseFor each pair of contigs in a metagenome assembly, MetaBAT calculates their probabilistic distances based on tetranucleotide frequency (TNF) and abundance (i.e., mean base coverage), then the two distances are integrated into one composite distance. 
+	All the pairwise distances form a matrix, which then is supplied to a modified k-medoid clustering algorithm to bin contigs iteratively and exhaustively into genome bins.
+	So, we can bin by the most probable sequences in a genome assembly. 
+	Deriving a distance to discriminate TNFs of different genomes can be calculated with Euclidean distance of the likelihood of inter- and intra-species genomes, doing so for which species we have databases and a regerence genome for. 
+	
+
 
 # Step 2A: Create an index of the assembly
 	bwa index assembly.fasta
@@ -127,14 +140,35 @@
 	Question 3B: In your README, comment on roughly what percentage of the assembly do they represent?
 	grep ">" bins.*.fa | cut -d "_" -f 4 | paste -sd+ - | bc
 	11965344
-	
-	Question 3C: In your README, comment on whether you think the sizes of each bin look about right, based on what you know about the size of prokaryotic genomes?
 	grep -v ">" assembly.fasta | wc
 	38708237
+	
 	Sure, our bins are 11965344 / 38708237, representing about 31% of the genome.
+	
+	Question 3C: In your README, comment on whether you think the sizes of each bin look about right, based on what you know about the size of prokaryotic genomes?
+	grep -v ">" bins.1.fa | wc
+	1683638
+	#About 1/3rd	
+	grep -v ">" bins.2.fa | wc
+	1571294
+	#About 1/3rd
+	grep -v ">" bins.3.fa | wc
+	3481100
+	#This is much closer to the full genome size!
+	grep -v ">" bins.4.fa | wc
+	650325
+	#Much less than 1/3, about 1/6th.
+	grep -v ">" bins.5.fa | wc
+	2518245
+	#More than half
+	grep -v ">" bins.6.fa | wc	
+	2260243
+	#More than half
 	
 	Question 3D:In your README, describe how you might estimate how complete and how contaminated each bin is?
 	I could individually look at each bin with the grep -v ">" command, and compare each to the assembly.fasta.
+	Based on the assembly fasta, the fewer number of regions (size compared to reference fasta), can tell me how corrupt the file is. 
+	For instance, the file for bins.4.fa is about 1/6th the genome size of the assembly.fasta, therefore it is highly corrupt. 
 	
 
 # Step 3: Predict the taxonomic composition (genus/species) of your putative genomes
