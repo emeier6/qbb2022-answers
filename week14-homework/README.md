@@ -219,15 +219,47 @@
 	But I am fighting my demons with this for loop so I just might :(
 		Alright, we ballin, it has been 15 minutes with the previous while loop code and it still hasnt run so here we go :,|
 	
-	grep ">" bins.2.fa | cut -f 2 | sort | uniq -c | sort | less -S	
+	grep ">" bins.2.fa | cut -f 2 | sort | uniq -c | sort | sort > bin2.txt
 	NOOOOOOOOOOOOOOO WHY ARE THERE SO MANY
-	
 	uhhh
+	 hmm. I will only do the first 5 because otherwise I will simply perish. 
+	 	I am sad and not feeling smart, but there is literally nothing online that can help me. I am dumb. 
+	 	1 >NODE_102_length_63777_cov_366.322306
+	 	1 >NODE_1040_length_5316_cov_473.227903
+	 	1 >NODE_1099_length_4883_cov_410.390431
+	 	1 >NODE_1104_length_4803_cov_316.747894
+	 	1 >NODE_1155_length_4441_cov_277.185819
+	
+	 	grep NODE_102_length_63777_cov_366.322306 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin2.1.txt
+	 	#root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Bacilli;Bacillales;Staphylococcaceae;Staphylococcus;Staphylococcus epidermidis;Staphylococcus epidermidis RP62A
+	 	grep NODE_1040_length_5316_cov_473.227903 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin2.2.txt
+	 	#more staph
+	 	grep NODE_1099_length_4883_cov_410.390431 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin2.3.txt
+	 	#more staph
+	 	grep NODE_1104_length_4803_cov_316.747894 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin2.4.txt
+	 	#Staphylococcus
+	 	grep NODE_1155_length_4441_cov_277.185819 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin2.5.txt
+	 	#Staph!
 	 
-	 hmm. 
 	 
-	grep ">" bins.3.fa | cut -f 2 | sort | uniq -c | sort | less -S	
-	I am sad and not feeling smart, but there is literally nothing online that can help me. I am dumb. 
+	grep ">" bins.3.fa | cut -f 2 | sort | uniq -c | sort > bin3.txt
+    	>NODE_100_length_64225_cov_373.885585
+      1 >NODE_106_length_62325_cov_110.076489
+      1 >NODE_1115_length_4728_cov_363.816178
+      1 >NODE_115_length_58463_cov_401.233016
+      1 >NODE_1163_length_4385_cov_421.907390
+	
+		grep NODE_100_length_64225_cov_373.885585 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin3.1.txt
+	#staph e.
+		grep NODE_106_length_62325_cov_110.076489 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin3.2.txt
+		#staph a. 
+		grep NODE_1115_length_4728_cov_363.816178 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin3.3.txt
+		#staph e. 
+		grep NODE_115_length_58463_cov_401.233016 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin3.4.txt
+		#more staphy e. 
+		grep NODE_1163_length_4385_cov_421.907390 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin3.5.txt
+	#more staph epyderims. 
+	
 	
 	grep ">" bins.4.fa | cut -f 2 | sort | uniq -c | sort | less -S	
 	Thank GOD there are only 3 :,^)
@@ -259,7 +291,20 @@
 	1 >NODE_9_length_293536_cov_118.600107
 	:(((((((
 		
-	grep ">" bins.6.fa | cut -f 2 | sort | uniq -c | sort | less -S	
+	grep NODE_11_length_278925_cov_118.155370 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin5.1.txt	
+	#Actinobacteria Cutibacterium avidum
+	grep NODE_186_length_42458_cov_125.041955 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin5.2.txt	
+	#Actinobacteria Cutibacterium avidum
+	grep NODE_208_length_37864_cov_119.516332 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin5.3.txt	
+	#Actinobacteria Cutibacterium avidum
+	grep NODE_4_length_455101_cov_112.371015 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin5.4.txt	
+	#Actinobacteria Cutibacterium avidum
+	grep NODE_9_length_293536_cov_118.600107 ~/qbb2022-answers/week14-homework/metagenomics_data/step0_givendata/KRAKEN/assembly.kraken > bin5.5.txt			
+	#Actinobacteria Cutibacterium avidum
+		
+		
+		
+	grep ">" bins.6.fa | cut -f 2 | sort | uniq -c | less -S 
 	1 >NODE_16_length_219929_cov_2350.909321
 	1 >NODE_1_length_1447137_cov_2268.097092
 	1 >NODE_2_length_556123_cov_2361.439230
@@ -274,19 +319,21 @@
 	
 	(A) Within your README, record your predictions for each bin?
 	Bin 1 is mosly Tissierellia and its subspeciees, and then some clostridia, and streptoccocus anginosus.
-	Bin 2
-	Bin 3
+	Bin 2 is staph!
+	Bin 3 more staph, this time with Staph. aureus
 	Bin 4 is symbiofluor and E. faecalis, of 2 different strains. 
-	Bin 5
+	Bin 5 all Actinobacteria Cutibacterium avidum!
 	Bin 6 All E. faecalis.
 	
-	Please... i am so tired and this is too much work all because I can't write a while loop in bash without crashing my computer. Why am i so dumbbbbbbb
-	Yo.. I can't submit my fa files that I made because I dont have permission??? I just made these omfl
+	I am ded
+	
 	
 	(B) This approach to classification is fast, but not very quantitative. Within your README, propose one method to more robustly infer the taxonomy of a metagenomic bin.
 	Is it fast? But maybe looking at 16S signatures from sequenced data, which this is. Nevermind, maybe it is just faster to group them by larger taxonomy (ie: lactic acid or acetic acid bacteria).
 	Maybe look at overlapping bins and see what is most prevalent? But that wouldn't be more sensitive. 
 	Maybe, just doing the most abundant taxonomy sorting, or something like that. Surely one can do a ML tree of the most likely and abundant sequences and just call it more generally there. 
+	This data binning also indicates more bins for staph and e faicalis, which staph was not all that present in the samples. Maybe a way to sort by samples specifically and percentage to what was observed preliminarily in 1?
+	
 	
 	Idk man, I am tired. Thank yall TAs for carrying us through this semester. I appreciate you all!
 	
